@@ -1,0 +1,674 @@
+/* Core Variables & Reset */
+:root {
+    --bg-color: #0f172a;
+    /* Deep Navy */
+    --text-color: #f8fafc;
+    /* White / Light Grey */
+    --accent-color: #22d3ee;
+    /* Electric Cyan */
+    --accent-glow: #67e8f9;
+    /* Lighter Cyan */
+    --secondary-bg: #1e293b;
+    /* Slate 800 */
+    --egg-color: #f472b6;
+    /* Hot Pink for the bugs */
+
+    --font-main: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f172a;
+    /* Dark overlay + Space Image */
+    background-image:
+        linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+        url('background.png');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    /* Parallax feel */
+    color: var(--text-color);
+    font-family: var(--font-main);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: none;
+    /* Disable drift for static image to avoid pixelation */
+}
+
+/* Noise / Grain Texture Layer */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes bgDrift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* --- Game HUD --- */
+#game-hud {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 1000;
+    font-family: var(--font-mono);
+    border: 1px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+.hud-label {
+    font-size: 0.8rem;
+    color: var(--accent-glow);
+    margin-right: 8px;
+}
+
+#score-counter {
+    font-weight: bold;
+    color: var(--egg-color);
+}
+
+/* --- Navigation (Refactored) --- */
+.book-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background: var(--secondary-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(34, 211, 238, 0.1);
+    z-index: 100;
+    padding-left: 20px;
+}
+
+.book-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    /* Align left */
+}
+
+.book-nav li {
+    transform: none;
+    /* No more rotation */
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+    padding-left: 0;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+    padding-left: 10px;
+}
+
+.nav-btn.active::before {
+    width: 10px;
+}
+
+/* --- Main "Book" Area --- */
+.book-container {
+    margin-left: 200px;
+    /* Matched to nav width */
+    position: relative;
+    height: 100%;
+    width: calc(100% - 200px);
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px 80px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(50px);
+    /* Slide effect */
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Start from top to allow scrolling */
+    overflow-y: auto;
+    /* Enable scrolling */
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: var(--accent-color) var(--secondary-bg);
+}
+
+.page::-webkit-scrollbar {
+    width: 8px;
+}
+
+.page::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+.page::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+}
+
+/* Specific Vertical Centering for Short Pages */
+#home.page,
+#contact.page {
+    justify-content: center;
+    /* Vertically center content */
+}
+
+/* --- Content Styling --- */
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.subtitle {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--accent-glow);
+    margin-bottom: 30px;
+}
+
+.decoration-line {
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.intro-text,
+.text-block p,
+.story-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 650px;
+    color: rgba(224, 224, 224, 0.9);
+    margin-bottom: 20px;
+}
+
+/* NEW: Threat & Hint Text */
+.threat-text {
+    display: block;
+    margin-top: 15px;
+    color: #f472b6;
+    /* Pinkish warning matching bugs */
+    font-weight: bold;
+    font-family: var(--font-mono);
+    animation: threatPulse 2s infinite;
+}
+
+.hint-text {
+    color: var(--accent-glow);
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 10px;
+    font-size: 0.95rem !important;
+}
+
+@keyframes threatPulse {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px #f472b6;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.cta-btn {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+}
+
+.cta-btn.small {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--accent-glow);
+    position: relative;
+    display: inline-block;
+}
+
+/* --- Resume Section --- */
+.resume-block {
+    margin: 30px 0;
+    padding: 20px;
+    border-left: 2px solid rgba(34, 211, 238, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.resume-block h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.resume-item {
+    margin-bottom: 20px;
+}
+
+.resume-item .date {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+
+.resume-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.resume-item p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Story Section --- */
+.story-content h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--accent-glow);
+}
+
+.story-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.story-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.story-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+}
+
+.story-list strong {
+    color: #fff;
+}
+
+/* --- Specific Page Layouts --- */
+.skills-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.skill-tag {
+    padding: 6px 14px;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-glow);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* --- FLIP CARDS (New V3) --- */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 200px;
+    perspective: 1000px;
+    /* 3D effect */
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flip-card-front {
+    background: rgba(30, 41, 59, 0.7);
+    /* Slightly customized for Navy theme */
+}
+
+.flip-card-back {
+    background: var(--secondary-bg);
+    border-color: var(--accent-color);
+    transform: rotateY(180deg);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+    /* Ensure children (bug) are clickable */
+    transform-style: preserve-3d;
+}
+
+/* Ensure bug inside card is clickable, on top, and hidden initially */
+.flip-card-back .bug {
+    transform: translateZ(1px);
+    /* Push it slightly forward in 3D space */
+    cursor: crosshair;
+    opacity: 0;
+    /* Hidden by default to prevent bleed-through */
+    transition: opacity 0.3s ease 0.2s;
+    /* Delay reveal until flip starts */
+}
+
+.flip-card:hover .flip-card-back .bug {
+    opacity: 1;
+    /* Reveal on flip */
+}
+
+.flip-card h3 {
+    color: var(--accent-glow);
+    margin-bottom: 10px;
+}
+
+.flip-hint {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: auto;
+    font-style: italic;
+    font-family: var(--font-mono);
+}
+
+
+.contact-links {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.contact-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* Base Bug Shape - Blue 'Glitch' Bug (Camouflaged) */
+.bug {
+    width: 14px;
+    height: 14px;
+    background-color: var(--accent-color);
+    /* Electric Cyan #22d3ee */
+    box-shadow: 0 0 8px var(--accent-color);
+    /* Cyan glow */
+    border-radius: 50%;
+    position: relative;
+    z-index: 1000;
+    cursor: crosshair;
+    animation: bugIdle 2s infinite alternate ease-in-out;
+    transition: transform 0.1s;
+}
+
+/* Head */
+.bug::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 3.5px;
+    width: 7px;
+    height: 6px;
+    background-color: #0891b2;
+    /* Darker Cyan/Teal head */
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Legs */
+.bug::before {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    background:
+        linear-gradient(90deg, transparent 45%, var(--accent-color) 45%, var(--accent-color) 55%, transparent 55%),
+        linear-gradient(0deg, transparent 45%, var(--accent-color) 45%, var(--accent-color) 55%, transparent 55%),
+        linear-gradient(45deg, transparent 45%, var(--accent-color) 45%, var(--accent-color) 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, var(--accent-color) 45%, var(--accent-color) 55%, transparent 55%);
+    z-index: -2;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.bug:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px var(--accent-color);
+    z-index: 1001;
+}
+
+/* Base Idle Animation (Pulse/Twitch) */
+@keyframes bugIdle {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px var(--accent-color);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px var(--accent-color);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px var(--accent-color);
+    }
+}
+
+/* Squashed Animation */
+.bug.squashed {
+    animation: squashAnim 0.3s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes squashAnim {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5, 0.5);
+        opacity: 0.8;
+        background-color: #9d174d;
+        /* Turn dark pink/red on death */
+        box-shadow: 0 0 15px #9d174d;
+    }
+
+    100% {
+        transform: scale(2, 0);
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* --- Victory Modal --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--secondary-bg);
+    border: 2px solid var(--accent-color);
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(34, 211, 238, 0.4);
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    color: var(--width-color);
+    margin-bottom: 20px;
+}
+
+#close-modal-btn {
+    background: var(--accent-color);
+    color: #0f172a;
+    /* Dark navy text on cyan button */
+    border: none;
+    padding: 10px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archana's Portfolio | The Hidden Quest</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Game HUD -->
+    <div id="game-hud">
+        <div class="score-board">
+            <span class="hud-label">BUGS SQUASHED:</span>
+            <span id="score-counter">0</span> / <span id="total-bugs">5</span>
+        </div>
+    </div>
+
+    <!-- Navigation (Tabs) -->
+    <nav class="book-nav" id="sidebar">
+        <ul>
+            <li><button class="nav-btn active" data-target="home">HOME</button></li>
+            <li><button class="nav-btn" data-target="about">ABOUT</button></li>
+            <li><button class="nav-btn" data-target="projects">PROJECTS</button></li>
+            <li><button class="nav-btn" data-target="story">STORY</button></li>
+            <li><button class="nav-btn" data-target="contact">CONTACT</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area (The "Book") -->
+    <main class="book-container">
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+            <div class="content-wrapper">
+                <h1>Hello, I'm <span class="highlight">Archana Sondur</span>.</h1>
+                <p class="subtitle">Software Engineer</p>
+                <div class="decoration-line"></div>
+                <p class="intro-text">
+                    Welcome to my digital space. It's not just a portfolio; it's a debugging session.<br>
+                    Can you squash all <strong class="highlight">5 Blue Bugs</strong> hiding in the system?<br>
+                    <span class="threat-text"
+                        style="color: var(--accent-color); text-shadow: 0 0 5px rgba(34, 211, 238, 0.5);">Squash them to
+                        clean up the code! 🐛💥</span>
+                </p>
+                <button class="cta-btn" onclick="navigateTo('projects')">View My Work</button>
+            </div>
+
+            <!-- Hidden Game Object 1: Positioned at bottom right -->
+            <div class="hidden-object bug" id="bug1" style="position: absolute; bottom: 50px; right: 50px;"
+                onclick="squashBug(1)" data-hint="I'm hiding in the bottom right corner!"></div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page">
+            <div class="content-wrapper">
+                <h2>About Me</h2>
+                <div class="text-block">
+                    <p>I’m a <strong>Master of Science in Computer Science student at the University of Southern
+                            California</strong> (GPA 3.67) and a builder at heart. I enjoy taking ideas from “rough
+                        concept” to “real product,” designing scalable systems, shipping clean web experiences, and
+                        layering in AI when it genuinely improves the workflow.</p>
+                    <p class="hint-text">Psst... check the bottom left corner. Something's crawling there.</p>
+                </div>
+
+                <!-- Education Section -->
+                <div class="resume-block" style="margin-bottom: 20px;">
+                    <h3>Education</h3>
+                    <div class="resume-item">
+                        <span class="date">2024 - 2026</span>
+                        <h4>M.S. Computer Science @ USC</h4>
+                        <p>Focus: Web Tech, ML, Analysis of Algorithms.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="resume-block">
+                    <h3>Experience</h3>
+                    <div class="resume-item">
+                        <span class="date">June 2025 - Aug 2025</span>
+                        <h4>Software Engineering Intern @ Genmark AI</h4>
+                        <p>Shipped end-to-end features using React, TypeScript, and Flask. Accelerated dev velocity with
+                            AI tooling.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">June 2022 - Aug 2022</span>
+                        <h4>Web Development Intern @ Till It Clicks</h4>
+                        <p>Designed responsive websites for businesses, increasing engagement by ~25%.</p>
+                    </div>
+                    <div class="resume-download">
+                        <a href="resume.pdf" target="_blank" class="cta-btn small">Download Full Resume</a>
+                    </div>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Languages -->
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Java</span>
+                    <!-- Frameworks -->
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">TailwindCSS</span>
+                    <!-- Databases & Cloud -->
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">GCP</span>
+                    <!-- Tools -->
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">CI/CD</span>
+                </div>
+            </div>
+
+            <!-- Hidden Game Object 2: Bottom Left corner -->
+            <div class="hidden-object bug" data-id="bug-2" style="position: absolute; bottom: 40px; left: 40px;"></div>
+        </section>
+
+        <!-- PROJECTS PAGE -->
+        <section id="projects" class="page">
+            <div class="content-wrapper">
+                <h2>Selected Projects</h2>
+                <p class="hint-text">Keep fliping those cards... bugs love dark places!</p>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Forge -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Forge</h3>
+                                <p>Full-Stack Job Tracking Platform.</p>
+                                <span class="flip-hint">(Hover to flip)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>React, Node.js, PostgreSQL, TypeScript.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Kanban workflows & scalable schema.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Skimsy (Containing the BUG) -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Skimsy</h3>
+                                <p>AI Document Summarizer.</p>
+                                <span class="flip-hint">(Hover to flip)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>React, Flask, OpenAI API.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Generates structured summaries
+                                    instantly.</p>
+                                <!-- Hidden Game Object 3: Inside the card back -->
+                                <div class="hidden-object bug" data-id="bug-3"
+                                    style="position: absolute; top: 15px; right: 15px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: SkyCast -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>SkyCast</h3>
+                                <p>Real-Time Weather Insights.</p>
+                                <span class="flip-hint">(Hover to flip)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>Angular, TypeScript, MongoDB.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Interactive charts & geolocation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORY PAGE -->
+        <section id="story" class="page">
+            <div class="content-wrapper">
+                <h2>My Story</h2>
+                <div class="story-content">
+                    <p>
+                        I run on <strong>organized chaos</strong>. I respect systems because life changes fast, so I
+                        build lightweight ones that can bend without breaking. I like clarity, but I’m not attached to
+                        perfect plans. If priorities shift, I shift faster. Give me a messy problem and a moving target,
+                        and I’ll still make progress look predictable.
+                    </p>
+                    <p>
+                        I don’t chase leadership titles, but I do chase <strong>ownership</strong>. If something is
+                        mine, it’s getting done and getting done well. I work best with autonomy and clear goals, and I
+                        ask for help early when I’m blocked. No ego, just momentum.
+                    </p>
+                    <p>
+                        Autonomy doesn’t mean I’m a solo act. I love teams when the goal is shared and communication is
+                        real. I’m not the loudest voice in the room because I prefer listening first and speaking with
+                        intention. I’ll connect dots, surface risks early, and give an opinion that moves decisions
+                        forward.
+                    </p>
+                    <p>
+                        <strong>Fun fact:</strong> I can start with scattered notes, 20 browser tabs, and a half-formed
+                        idea, and end with a clean plan, clear priorities, and a test list. It’s oddly satisfying.
+                    </p>
+                    <p>
+                        In crunch time, I’m a “less talk, more ship” person. Outside the rush, I’m all for a friendly,
+                        positive environment where people feel safe to ask questions and do their best work.
+                    </p>
+
+                    <div style="position: relative; display: inline-block; margin-top: 20px;">
+                        <h3>Hobbies & Interests</h3>
+                        <!-- Hidden Game Object 4: Next to header -->
+                        <div class="hidden-object bug" data-id="bug-4"
+                            style="position: absolute; top: 0; right: -60px;"></div>
+                    </div>
+
+                    <p class="hint-text">There's a bug hiding near my hobbies!</p>
+
+                    <ul class="story-list">
+                        <li><strong>Dancing:</strong> Use movement to express what code can't.</li>
+                        <li><strong>Trekking & Traveling:</strong> Exploring the physical world to reset the digital
+                            one.</li>
+                        <li><strong>Driving:</strong> Cars, specifically. I love the control and focus of the road.</li>
+                        <li><strong>Night sky:</strong> My quiet reset. I love stargazing when I need to zoom out and
+                            breathe.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page">
+            <div class="content-wrapper">
+                <h2>Get In Touch</h2>
+                <p>Interested in my work? Let's connect.</p>
+                <p class="hint-text">One last bug... checking out my GitHub?</p>
+
+                <div class="contact-links" style="position: relative;">
+                    <a href="mailto:sondur@usc.edu" class="contact-link">Email Me</a>
+                    <a href="https://linkedin.com/in/archana-sondur-a2646a191" target="_blank"
+                        class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/archanasondur" target="_blank" class="contact-link">GitHub</a>
+
+                    <!-- Hidden Game Object 5: Inline with links -->
+                    <div class="hidden-object bug" data-id="bug-5"
+                        style="position: relative; display: inline-block; top: 0; left: 10px; vertical-align: middle;">
+                    </div>
+                </div>
+
+                <div class="msg-box">
+                    <p>Or keep looking for those bugs...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Victory Modal -->
+    <div id="victory-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🏆 YOU FOUND THEM ALL! 🏆</h2>
+            <p>You have sharp eyes. Thanks for exploring every corner of my work.</p>
+            <button id="close-modal-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
