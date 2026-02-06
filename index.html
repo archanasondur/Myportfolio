@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archana's Portfolio | The Hidden Quest</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -39,7 +39,7 @@
         <section id="home" class="page active">
             <div class="content-wrapper">
                 <h1>Hello, I'm <span class="highlight">Archana Sondur</span>.</h1>
-                <p class="subtitle">Software Engineer</p>
+                <p class="subtitle">Software Engineer | Full Stack Developer | Creative Technologist</p>
                 <div class="decoration-line"></div>
                 <p class="intro-text">
                     Welcome to my digital space. It's not just a portfolio; it's a debugging session.<br>
@@ -62,7 +62,7 @@
                 <h2>About Me</h2>
                 <div class="text-block">
                     <p>I’m a <strong>Master of Science in Computer Science student at the University of Southern
-                            California</strong> (GPA 3.67) and a builder at heart. I enjoy taking ideas from “rough
+                            California</strong> (GPA 3.65) and a builder at heart. I enjoy taking ideas from “rough
                         concept” to “real product,” designing scalable systems, shipping clean web experiences, and
                         layering in AI when it genuinely improves the workflow.</p>
                     <p class="hint-text">Psst... check the bottom left corner. Something's crawling there.</p>
@@ -72,9 +72,18 @@
                 <div class="resume-block" style="margin-bottom: 20px;">
                     <h3>Education</h3>
                     <div class="resume-item">
-                        <span class="date">2024 - 2026</span>
-                        <h4>M.S. Computer Science @ USC</h4>
-                        <p>Focus: Web Tech, ML, Analysis of Algorithms.</p>
+                        <span class="date">Aug 2024 - May 2026</span>
+                        <h4>M.S. in Computer Science @ USC</h4>
+                        <p><strong>GPA:</strong> 3.65/4</p>
+                        <p><strong>Coursework:</strong> Analysis of Algorithms, Web Technologies, Applied NLP, Machine
+                            Learning, Security Systems, Multimedia Systems Design, Databases, Software Engineering.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">Aug 2019 - May 2023</span>
+                        <h4>Bachelor of Technology in Computer Engineering @ B.R.A.C.T's VIIT</h4>
+                        <p><strong>GPA:</strong> 3.8/4</p>
+                        <p><strong>Coursework:</strong> Operating Systems, High Performance Computing, Computer
+                            Architecture, Database Systems Management.</p>
                     </div>
                 </div>
 
@@ -84,13 +93,21 @@
                     <div class="resume-item">
                         <span class="date">June 2025 - Aug 2025</span>
                         <h4>Software Engineering Intern @ Genmark AI</h4>
-                        <p>Shipped end-to-end features using React, TypeScript, and Flask. Accelerated dev velocity with
-                            AI tooling.</p>
+                        <p>Built and shipped end-to-end product features using React, TypeScript, Tailwind, and Flask.
+                            Iterated quickly using AI coding tools to accelerate development. Wrote REST APIs, added
+                            input checks, and standardized error messages.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">Aug 2022 - Dec 2022</span>
+                        <h4>Research Intern @ Crash Consistency in File Systems</h4>
+                        <p>Conducted systems research under Dr. Sachin Sakhare, analyzing journaling, log-structuring,
+                            and shadow paging. Developed a simulation tool to evaluate fault recovery mechanisms.</p>
                     </div>
                     <div class="resume-item">
                         <span class="date">June 2022 - Aug 2022</span>
                         <h4>Web Development Intern @ Till It Clicks</h4>
-                        <p>Designed responsive websites for businesses, increasing engagement by ~25%.</p>
+                        <p>Designed and deployed 5+ business websites using WordPress, Wix, and Avada, increasing user
+                            engagement by ~25%. Implemented responsive front ends using HTML, CSS, and JS.</p>
                     </div>
                     <div class="resume-download">
                         <a href="resume.pdf" target="_blank" class="cta-btn small">Download Full Resume</a>
@@ -98,26 +115,46 @@
                 </div>
 
                 <div class="skills-grid">
-                    <!-- Languages -->
+                    <div style="width: 100%; margin-bottom: 10px; color: var(--accent-glow); font-size: 0.9rem;">
+                        Languages & Frameworks</div>
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">TypeScript</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">C++</span>
                     <span class="skill-tag">Java</span>
-                    <!-- Frameworks -->
                     <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Flask</span>
                     <span class="skill-tag">TailwindCSS</span>
-                    <!-- Databases & Cloud -->
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Go</span>
+                    <span class="skill-tag">Rust</span>
+
+                    <div style="width: 100%; margin: 15px 0 10px 0; color: var(--accent-glow); font-size: 0.9rem;">
+                        Databases & Cloud</div>
                     <span class="skill-tag">PostgreSQL</span>
                     <span class="skill-tag">MongoDB</span>
                     <span class="skill-tag">Firebase</span>
                     <span class="skill-tag">AWS</span>
                     <span class="skill-tag">GCP</span>
-                    <!-- Tools -->
                     <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">GitHub Actions</span>
                     <span class="skill-tag">CI/CD</span>
+                </div>
+
+                <!-- Publications Section -->
+                <div class="resume-block" style="margin-top: 30px;">
+                    <h3>Publications</h3>
+                    <div class="resume-item">
+                        <span class="date">July 2023</span>
+                        <h4>Comparative Analysis of Crash Consistency Techniques</h4>
+                        <p>Published in Springer Lecture Notes in Networks and Systems 676.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">May 2023</span>
+                        <h4>Smart City IoT Data Management with Proactive Middleware</h4>
+                        <p>International Journal on Recent and Innovation Trends in Computing and Communication.</p>
+                    </div>
                 </div>
             </div>
 
@@ -128,39 +165,66 @@
         <!-- PROJECTS PAGE -->
         <section id="projects" class="page">
             <div class="content-wrapper">
-                <h2>Selected Projects</h2>
+                <h2>Projects</h2>
                 <p class="hint-text">Keep fliping those cards... bugs love dark places!</p>
 
                 <div class="projects-grid">
-                    <!-- Project 1: Forge -->
-                    <div class="flip-card">
+                    <!-- Project 1: NudgeEngine -->
+                    <div class="flip-card" data-title="NudgeEngine" data-subtitle="Execution Engine for Schedules"
+                        data-stack="Go, Rust, Postgres, Docker, GitHub Actions"
+                        data-description="Engineered a high-reliability scheduling and reminder backend designed for fault tolerance. The system decouples the API layer (Go) from the execution logic (Rust) to ensure performance and safety."
+                        data-details='["Implemented robust health/DB probes, structured logging, and graceful shutdown sequences to handle production workloads.", "Designed a proof-layer testing strategy with observability, load testing, and chaos engineering components.", "Containerized the entire stack including Postgres for reproducible development environments."]'>
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <h3>Forge</h3>
-                                <p>Full-Stack Job Tracking Platform.</p>
-                                <span class="flip-hint">(Hover to flip)</span>
+                                <h3>NudgeEngine</h3>
+                                <p>Execution Engine for Schedules.</p>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
                             </div>
                             <div class="flip-card-back">
                                 <h3>Tech Stack</h3>
-                                <p>React, Node.js, PostgreSQL, TypeScript.</p>
-                                <p style="font-size: 0.85rem; margin-top: 5px;">Kanban workflows & scalable schema.</p>
+                                <p>Go, Rust, Postgres, Docker.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Reliability-first backend with health
+                                    probes & graceful shutdown.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: Skimsy (Containing the BUG) -->
-                    <div class="flip-card">
+                    <!-- Project 2: Forge -->
+                    <div class="flip-card" data-title="Forge" data-subtitle="Full Stack Job Tracking Platform"
+                        data-stack="React, Node.js, PostgreSQL, TypeScript"
+                        data-description="Architected a production-grade application for managing job applications with a focus on user experience and data scalability."
+                        data-details='["Built a Kanban-style board for visual workflow management with drag-and-drop capabilities.", "Designed a scalable PostgreSQL schema to handle complex filtering and sorting of large datasets.", "Developed reusable React components to standardize the UI/UX across the platform."]'>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Forge</h3>
+                                <p>Full Stack Job Tracker.</p>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>React, Node.js, PostgreSQL.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Kanban workflows, filters, and clean UX.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Skimsy -->
+                    <div class="flip-card" data-title="Skimsy" data-subtitle="AI Document Summarizer"
+                        data-stack="React, Flask, OpenAI API"
+                        data-description="Direct integration of LLM APIs to provide instant, structured summaries of complex documents."
+                        data-details='["Optimized the summarization pipeline for low latency and high accuracy.", "Created an interactive preview interface allowing users to refine summaries in real-time."]'>
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h3>Skimsy</h3>
                                 <p>AI Document Summarizer.</p>
-                                <span class="flip-hint">(Hover to flip)</span>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
                             </div>
                             <div class="flip-card-back">
                                 <h3>Tech Stack</h3>
                                 <p>React, Flask, OpenAI API.</p>
-                                <p style="font-size: 0.85rem; margin-top: 5px;">Generates structured summaries
-                                    instantly.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Generates structured summaries for fast
+                                    preview.</p>
                                 <!-- Hidden Game Object 3: Inside the card back -->
                                 <div class="hidden-object bug" data-id="bug-3"
                                     style="position: absolute; top: 15px; right: 15px;"></div>
@@ -168,13 +232,16 @@
                         </div>
                     </div>
 
-                    <!-- Project 3: SkyCast -->
-                    <div class="flip-card">
+                    <!-- Project 4: SkyCast (Restored) -->
+                    <div class="flip-card" data-title="SkyCast" data-subtitle="Real-Time Weather Insights"
+                        data-stack="Angular, TypeScript, MongoDB"
+                        data-description="Interactive weather dashboard providing real-time data visualization and location-based insights."
+                        data-details='["Implemented geolocation services to provide local weather updates automatically.", "Designed interactive charts using Chart.js to visualize temperature trends and forecasts."]'>
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <h3>SkyCast</h3>
                                 <p>Real-Time Weather Insights.</p>
-                                <span class="flip-hint">(Hover to flip)</span>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
                             </div>
                             <div class="flip-card-back">
                                 <h3>Tech Stack</h3>
@@ -184,6 +251,9 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Detailed Project Listings -->
+
             </div>
         </section>
 
@@ -274,8 +344,32 @@
             <button id="close-modal-btn">Close</button>
         </div>
     </div>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content project-modal-content">
+            <h2 id="modal-title">Project Title</h2>
+            <p id="modal-subtitle" class="subtitle">Subtitle</p>
+            <div class="decoration-line" style="margin: 0 auto 20px auto;"></div>
+
+            <p id="modal-stack" class="highlight"
+                style="margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.9rem;">Stack</p>
+
+            <p id="modal-description" class="intro-text" style="text-align: left; margin-bottom: 20px;">
+                Description goes here.
+            </p>
+
+            <ul id="modal-details"
+                style="text-align: left; margin-left: 20px; color: rgba(255, 255, 255, 0.8); margin-bottom: 30px; line-height: 1.6;">
+                <!-- List items injected by JS -->
+            </ul>
+
+            <button id="close-project-modal-btn" class="cta-btn small">Close Details</button>
+        </div>
+    </div>
+
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

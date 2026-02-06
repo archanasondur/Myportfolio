@@ -37,6 +37,61 @@ document.addEventListener('DOMContentLoaded', () => {
     window.navigateTo = navigateTo;
 
 
+    // --- PROJECT MODAL LOGIC ---
+    const projectModal = document.getElementById('project-modal');
+    const closeProjectModalBtn = document.getElementById('close-project-modal-btn');
+
+    // Elements to populate
+    const modalTitle = document.getElementById('modal-title');
+    const modalSubtitle = document.getElementById('modal-subtitle');
+    const modalStack = document.getElementById('modal-stack');
+    const modalDescription = document.getElementById('modal-description');
+    const modalDetails = document.getElementById('modal-details');
+
+    document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Prevent opening if clicking the bug (which has its own logic)
+            if (e.target.classList.contains('bug')) return;
+
+            const title = card.getAttribute('data-title');
+            const subtitle = card.getAttribute('data-subtitle');
+            const stack = card.getAttribute('data-stack');
+            const description = card.getAttribute('data-description');
+            const details = JSON.parse(card.getAttribute('data-details') || '[]');
+
+            // Populate Modal
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            modalStack.textContent = "Stack: " + stack;
+            modalDescription.textContent = description;
+
+            // Clear and populate details list
+            modalDetails.innerHTML = '';
+            details.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                modalDetails.appendChild(li);
+            });
+
+            // Show Modal
+            projectModal.classList.remove('hidden');
+        });
+    });
+
+    if (closeProjectModalBtn) {
+        closeProjectModalBtn.addEventListener('click', () => {
+            projectModal.classList.add('hidden');
+        });
+    }
+
+    // Close on click outside modal content
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) {
+            projectModal.classList.add('hidden');
+        }
+    });
+
+
     // --- GAME LOGIC (Bug Squash V5) ---
     const totalBugs = 5;
     let squashedBugs = 0;
