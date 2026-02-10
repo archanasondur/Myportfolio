@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archana's Portfolio | The Hidden Quest</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=8">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -37,18 +37,23 @@
 
         <!-- HOME PAGE -->
         <section id="home" class="page active">
-            <div class="content-wrapper">
-                <h1>Hello, I'm <span class="highlight">Archana Sondur</span>.</h1>
-                <p class="subtitle">Software Engineer | Full Stack Developer </p>
-                <div class="decoration-line"></div>
-                <p class="intro-text">
-                    Welcome to my digital space. It's not just a portfolio; it's a debugging session.<br>
-                    Can you squash all <strong class="highlight">5 Blue Bugs</strong> hiding in the system?<br>
-                    <span class="threat-text"
-                        style="color: var(--accent-color); text-shadow: 0 0 5px rgba(34, 211, 238, 0.5);">Squash them to
-                        clean up the code! 🐛💥</span>
-                </p>
-                <button class="cta-btn" onclick="navigateTo('projects')">View My Work</button>
+            <div class="content-wrapper home-layout">
+                <div class="home-text">
+                    <h1>Hello, I'm <span class="highlight">Archana Sondur</span>.</h1>
+                    <p class="subtitle">Software Engineer | Full Stack Developer </p>
+                    <div class="decoration-line"></div>
+                    <p class="intro-text">
+                        Welcome to my digital space. It's not just a portfolio; it's a debugging session.<br>
+                        Can you squash all <strong class="highlight">5 Blue Bugs</strong> hiding in the system?<br>
+                        <span class="threat-text"
+                            style="color: var(--accent-color); text-shadow: 0 0 5px rgba(34, 211, 238, 0.5);">Squash
+                            them to
+                            clean up the code! 🐛💥</span>
+                    </p>
+                </div>
+                <div class="home-image">
+                    <img src="profile.png" alt="Archana Sondur" class="profile-img">
+                </div>
             </div>
 
             <!-- Hidden Game Object 1: Positioned at bottom right -->
@@ -114,6 +119,23 @@
                     </div>
                 </div>
 
+
+
+                <!-- Publications Section -->
+                <div class="resume-block">
+                    <h3>Publications</h3>
+                    <div class="resume-item">
+                        <span class="date">July 2023</span>
+                        <h4>Comparative Analysis of Crash Consistency Techniques</h4>
+                        <p>Published in Springer Lecture Notes in Networks and Systems 676.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">May 2023</span>
+                        <h4>Smart City IoT Data Management with Proactive Middleware</h4>
+                        <p>International Journal on Recent and Innovation Trends in Computing and Communication.</p>
+                    </div>
+                </div>
+
                 <div class="skills-grid">
                     <div style="width: 100%; margin-bottom: 10px; color: var(--accent-glow); font-size: 0.9rem;">
                         Languages & Frameworks</div>
@@ -140,21 +162,6 @@
                     <span class="skill-tag">Docker</span>
                     <span class="skill-tag">GitHub Actions</span>
                     <span class="skill-tag">CI/CD</span>
-                </div>
-
-                <!-- Publications Section -->
-                <div class="resume-block" style="margin-top: 30px;">
-                    <h3>Publications</h3>
-                    <div class="resume-item">
-                        <span class="date">July 2023</span>
-                        <h4>Comparative Analysis of Crash Consistency Techniques</h4>
-                        <p>Published in Springer Lecture Notes in Networks and Systems 676.</p>
-                    </div>
-                    <div class="resume-item">
-                        <span class="date">May 2023</span>
-                        <h4>Smart City IoT Data Management with Proactive Middleware</h4>
-                        <p>International Journal on Recent and Innovation Trends in Computing and Communication.</p>
-                    </div>
                 </div>
             </div>
 
