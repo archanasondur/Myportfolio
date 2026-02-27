@@ -349,26 +349,31 @@ h2 {
 
 /* --- Resume Section (Timeline Style) --- */
 .resume-block {
-    margin: 50px 0;
-    padding: 10px 0 10px 40px;
-    /* More left padding for dots */
-    border-left: 2px solid rgba(34, 211, 238, 0.3);
-    /* The Timeline Line */
-    background: transparent;
+    margin: 60px 0;
+    padding: 20px 0 20px 45px;
+    border-left: 2px solid rgba(34, 211, 238, 0.2);
     position: relative;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 0 12px 12px 0;
+    transition: background 0.3s ease;
+}
+
+.resume-block:hover {
+    background: rgba(30, 41, 59, 0.5);
 }
 
 .resume-block h3 {
     color: var(--accent-glow);
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     font-size: 1.8rem;
     position: relative;
-    left: -55px;
-    /* Pull header back to align with line */
+    left: -60px;
     background: var(--bg-color);
-    /* Mask line behind text */
     display: inline-block;
-    padding: 0 15px;
+    padding: 5px 20px;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
 }
 
 .resume-item {
@@ -419,10 +424,10 @@ h2 {
 
 .resume-item p {
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.8;
-    /* Better readability */
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.85;
     max-width: 800px;
+    letter-spacing: 0.2px;
 }
 
 /* --- Story Section --- */
@@ -459,19 +464,29 @@ h2 {
 /* --- Specific Page Layouts --- */
 .skills-grid {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 10px;
+    max-width: 800px;
 }
 
 .skill-tag {
-    padding: 6px 14px;
-    background: rgba(34, 211, 238, 0.1);
-    border: 1px solid rgba(34, 211, 238, 0.3);
-    border-radius: 4px;
+    padding: 8px 16px;
+    background: rgba(34, 211, 238, 0.05);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--accent-glow);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(34, 211, 238, 0.2);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
+    color: #fff;
 }
 
 .projects-grid {
