@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- HAMBURGER MENU LOGIC ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            sidebar.classList.toggle('open');
+        });
+    }
+
     // --- NAVIGATION LOGIC ---
     const navBtns = document.querySelectorAll('.nav-btn');
     const pages = document.querySelectorAll('.page');
@@ -22,6 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 page.classList.remove('active');
             }
         });
+
+        // Close mobile nav on page change
+        if (hamburgerBtn && sidebar) {
+            hamburgerBtn.classList.remove('active');
+            sidebar.classList.remove('open');
+        }
     }
 
     // Initial Load
