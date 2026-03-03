@@ -119,9 +119,8 @@ body::before {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
     align-items: flex-start;
-    /* Align left */
 }
 
 .book-nav li {
@@ -134,7 +133,7 @@ body::before {
     border: none;
     color: rgba(255, 255, 255, 0.5);
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 0.85rem;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -393,18 +392,30 @@ h2 {
 }
 
 .resume-item {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     position: relative;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(34, 211, 238, 0.08);
+    border-radius: 10px;
+    padding: 24px 28px;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.resume-item:hover {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(34, 211, 238, 0.25);
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(34, 211, 238, 0.08), 0 0 0 1px rgba(34, 211, 238, 0.05);
 }
 
 /* The Timeline Dot */
 .resume-item::before {
     content: '';
     position: absolute;
-    top: 5px;
-    left: -49px;
-    width: 16px;
-    height: 16px;
+    top: 28px;
+    left: -53px;
+    width: 14px;
+    height: 14px;
     background: var(--bg-color);
     border: 3px solid var(--accent-color);
     border-radius: 50%;
@@ -587,6 +598,57 @@ h2 {
 .contact-wrapper {
     align-items: center;
     text-align: center;
+}
+
+/* Open to Work Banner */
+.open-to-work-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 50px;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #6ee7b7;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: bannerGlow 3s ease-in-out infinite alternate;
+}
+
+.otw-dot {
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes bannerGlow {
+    0% {
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
 }
 
 .contact-tagline {
@@ -885,6 +947,27 @@ h2 {
     margin-bottom: 15px;
 }
 
+/* --- Footer --- */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 200px;
+    width: calc(100% - 200px);
+    text-align: center;
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.site-footer .highlight {
+    color: rgba(34, 211, 238, 0.5);
+    text-shadow: none;
+}
+
 /* ========================================= */
 /* ===   MOBILE RESPONSIVE BREAKPOINTS   === */
 /* ========================================= */
@@ -915,19 +998,19 @@ h2 {
     }
 
     .book-nav.open {
-        max-height: 320px;
+        max-height: 420px;
         padding: 65px 20px 25px 20px;
     }
 
     .book-nav ul {
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
         width: 100%;
     }
 
     .nav-btn {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
         padding-left: 0;
         text-align: center;
         letter-spacing: 3px;
@@ -989,6 +1072,11 @@ h2 {
 
     .decoration-line {
         margin: 0 auto 25px auto;
+    }
+
+    .site-footer {
+        left: 0;
+        width: 100%;
     }
 
     .resume-block {

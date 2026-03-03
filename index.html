@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archana's Portfolio | The Hidden Quest</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=13">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -33,7 +33,10 @@
         <ul>
             <li><button class="nav-btn active" data-target="home">HOME</button></li>
             <li><button class="nav-btn" data-target="about">ABOUT</button></li>
+            <li><button class="nav-btn" data-target="experience">EXPERIENCE</button></li>
+            <li><button class="nav-btn" data-target="education">EDUCATION</button></li>
             <li><button class="nav-btn" data-target="projects">PROJECTS</button></li>
+            <li><button class="nav-btn" data-target="publications">PUBLICATIONS</button></li>
             <li><button class="nav-btn" data-target="story">STORY</button></li>
             <li><button class="nav-btn" data-target="contact">CONTACT</button></li>
         </ul>
@@ -48,6 +51,10 @@
                 <div class="home-text">
                     <h1>Hello, I'm <span class="highlight">Archana Sondur</span>.</h1>
                     <p class="subtitle">Software Engineer | Full Stack Developer </p>
+                    <div class="open-to-work-banner">
+                        <span class="otw-dot"></span>
+                        <span>Open to Full-Time Opportunities · May 2026</span>
+                    </div>
                     <div class="decoration-line"></div>
                     <p class="intro-text">
                         Welcome to my digital space. It's not just a portfolio; it's a debugging session.<br>
@@ -57,6 +64,9 @@
                             them to
                             clean up the code! 🐛💥</span>
                     </p>
+                    <div class="resume-download" style="margin-top: 25px;">
+                        <a href="Resume.pdf" target="_blank" class="cta-btn small">Download My Resume</a>
+                    </div>
                 </div>
                 <div class="home-image">
                     <img src="profile.png" alt="Archana Sondur" class="profile-img">
@@ -113,28 +123,17 @@
                     </div>
                 </div>
 
-                <!-- Education Section -->
-                <div class="resume-block">
-                    <h3>Education</h3>
-                    <div class="resume-item">
-                        <span class="date">Aug 2024 - May 2026</span>
-                        <h4>M.S. in Computer Science @ USC</h4>
-                        <p><strong>GPA:</strong> 3.65/4</p>
-                        <p><strong>Coursework:</strong> Analysis of Algorithms, Web Technologies, Applied NLP, Machine
-                            Learning, Security Systems, Multimedia Systems Design, Databases, Software Engineering.</p>
-                    </div>
-                    <div class="resume-item">
-                        <span class="date">Aug 2019 - May 2023</span>
-                        <h4>Bachelor of Technology in Computer Engineering @ B.R.A.C.T's VIIT</h4>
-                        <p><strong>GPA:</strong> 3.8/4</p>
-                        <p><strong>Coursework:</strong> Operating Systems, High Performance Computing, Computer
-                            Architecture, Database Systems Management.</p>
-                    </div>
-                </div>
+            </div>
 
-                <!-- Experience Section -->
+            <!-- Hidden Game Object 2: Bottom Left corner -->
+            <div class="hidden-object bug" data-id="bug-2" style="position: absolute; bottom: 40px; left: 40px;"></div>
+        </section>
+
+        <!-- EXPERIENCE PAGE -->
+        <section id="experience" class="page">
+            <div class="content-wrapper">
+                <h2>Experience</h2>
                 <div class="resume-block">
-                    <h3>Experience</h3>
                     <div class="resume-item">
                         <span class="date">June 2025 - Aug 2025</span>
                         <h4>Software Engineering Intern @ Genmark AI</h4>
@@ -156,16 +155,39 @@
                         <p>Designed and deployed 5+ business websites using WordPress, Wix, and Avada, increasing user
                             engagement by ~25%. Implemented responsive front ends using HTML, CSS, and JS.</p>
                     </div>
-                    <div class="resume-download">
-                        <a href="Resume.pdf" target="_blank" class="cta-btn small">Download Full Resume</a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION PAGE -->
+        <section id="education" class="page">
+            <div class="content-wrapper">
+                <h2>Education</h2>
+                <div class="resume-block">
+                    <div class="resume-item">
+                        <span class="date">Aug 2024 - May 2026</span>
+                        <h4>M.S. in Computer Science @ USC</h4>
+                        <p><strong>GPA:</strong> 3.65/4</p>
+                        <p><strong>Coursework:</strong> Analysis of Algorithms, Web Technologies, Applied NLP, Machine
+                            Learning, Security Systems, Multimedia Systems Design, Databases, Software Engineering.</p>
+                    </div>
+                    <div class="resume-item">
+                        <span class="date">Aug 2019 - May 2023</span>
+                        <h4>Bachelor of Technology in Computer Engineering @ B.R.A.C.T's VIIT</h4>
+                        <p><strong>GPA:</strong> 3.8/4</p>
+                        <p><strong>Coursework:</strong> Operating Systems, High Performance Computing, Computer
+                            Architecture, Database Systems Management.</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-
-
-                <!-- Publications Section -->
+        <!-- PUBLICATIONS PAGE -->
+        <section id="publications" class="page">
+            <div class="content-wrapper">
+                <h2>Publications</h2>
                 <div class="resume-block">
-                    <h3>Publications</h3>
                     <div class="resume-item">
                         <span class="date">July 2023</span>
                         <h4>Comparative Analysis of Crash Consistency Techniques</h4>
@@ -178,9 +200,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Hidden Game Object 2: Bottom Left corner -->
-            <div class="hidden-object bug" data-id="bug-2" style="position: absolute; bottom: 40px; left: 40px;"></div>
         </section>
 
         <!-- PROJECTS PAGE -->
@@ -334,6 +353,12 @@
         <section id="contact" class="page">
             <div class="content-wrapper contact-wrapper">
                 <h2>Get In Touch</h2>
+
+                <div class="open-to-work-banner">
+                    <span class="otw-dot"></span>
+                    <span>Open to Full-Time Opportunities · May 2026</span>
+                </div>
+
                 <p class="contact-tagline">Interested in collaborating or just want to say hi? <br>Pick your favorite
                     channel.</p>
                 <p class="hint-text">One last bug... checking out my GitHub?</p>
@@ -444,6 +469,11 @@
     </div>
 
     <script src="script.js?v=2"></script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Designed & Built by <span class="highlight">Archana Sondur</span> · 2026</p>
+    </footer>
 </body>
 
 </html>
