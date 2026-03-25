@@ -137,9 +137,11 @@
                     <div class="resume-item">
                         <span class="date">June 2025 - Aug 2025</span>
                         <h4>Software Engineering Intern @ Genmark AI</h4>
-                        <p>Built and shipped end-to-end product features using React, TypeScript, Tailwind, and Flask.
-                            Iterated quickly using AI coding tools to accelerate development. Wrote REST APIs, added
-                            input checks, and standardized error messages.</p>
+                        <p>Shipped auth, profile management, and media upload features end-to-end using React,
+                            TypeScript, and Flask. Introduced unit tests and a GitHub Actions CI pipeline, then
+                            built AI-assisted prototyping tools that accelerated development across the team.
+                            Prototyped a Unified Inbox during an internal hackathon to aggregate business signals and
+                            surface marketing insights.</p>
                     </div>
                     <div class="resume-item">
                         <span class="date">Aug 2022 - Dec 2022</span>
@@ -209,6 +211,46 @@
                 <p class="hint-text">Keep fliping those cards... bugs love dark places!</p><br>
 
                 <div class="projects-grid">
+                    <!-- Project 1: Inbox Matrix -->
+                    <div class="flip-card" data-title="Inbox Matrix" data-subtitle="AI Email Triage Dashboard"
+                        data-stack="Python, Flask, Gmail API, Groq LLaMA 3.1, Redis, scikit-learn, Docker, GCP"
+                        data-description="Full-stack AI dashboard that classifies emails into the Eisenhower Matrix using LLaMA 3.1. Feedback-driven scikit-learn layer adapts to user corrections. Async Redis worker queue for concurrent load. Deployed on Google Cloud Run with JWT auth and an animated Kanban frontend."
+                        data-details='["Classifies incoming emails into Eisenhower Matrix quadrants using LLaMA 3.1 for prioritization and triage.", "Learns from user corrections with a feedback-driven scikit-learn layer that continuously improves categorization quality.", "Uses an async Redis worker queue for concurrent processing and is deployed on Google Cloud Run with JWT auth."]'>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Inbox Matrix</h3>
+                                <p>AI Email Triage Dashboard.</p>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>Python, Flask, Gmail API, Groq LLaMA 3.1, Redis, scikit-learn, Docker, GCP.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">AI triage with adaptive feedback,
+                                    async workers, and Cloud Run deployment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: BreakPoint -->
+                    <div class="flip-card" data-title="BreakPoint" data-subtitle="Interactive System Design Learning Platform"
+                        data-stack="React, React Flow, Framer Motion, Vite, Vercel"
+                        data-description="Failure-driven learning platform where users diagnose live system incidents by clicking nodes in animated distributed system diagrams. Covers DB connection exhaustion, thundering herd, circuit breakers, and CAP theorem. Features incident simulator, concept explainers, tradeoff cards, and guided design challenges."
+                        data-details='["Users diagnose live incidents by interacting with animated distributed system diagrams and node-level failure paths.", "Covers core system design failure modes including DB connection exhaustion, thundering herd, circuit breakers, and CAP tradeoffs.", "Includes incident simulator workflows, concept explainers, tradeoff cards, and guided design challenges."]'>
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>BreakPoint</h3>
+                                <p>Interactive System Design Learning Platform.</p>
+                                <span class="flip-hint">(Hover to flip / Click to expand)</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Tech Stack</h3>
+                                <p>React, React Flow, Framer Motion, Vite, Vercel.</p>
+                                <p style="font-size: 0.85rem; margin-top: 5px;">Failure-driven system design learning
+                                    with live incident simulation.</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Project 1: NudgeEngine -->
                     <div class="flip-card" data-title="NudgeEngine" data-subtitle="Execution Engine for Schedules"
                         data-stack="Go, Rust, Postgres, Docker, GitHub Actions"
@@ -251,7 +293,7 @@
 
                     <!-- Project 3: Skimsy -->
                     <div class="flip-card" data-title="Skimsy" data-subtitle="AI Document Summarizer"
-                        data-stack="React, Flask, OpenAI API"
+                        data-stack="React, Flask, Hugging Face Transformers"
                         data-description="Direct integration of LLM APIs to provide instant, structured summaries of complex documents."
                         data-details='["Optimized the summarization pipeline for low latency and high accuracy.", "Created an interactive preview interface allowing users to refine summaries in real-time."]'>
                         <div class="flip-card-inner">
@@ -262,7 +304,7 @@
                             </div>
                             <div class="flip-card-back">
                                 <h3>Tech Stack</h3>
-                                <p>React, Flask, OpenAI API.</p>
+                                <p>React, Flask, Hugging Face Transformers.</p>
                                 <p style="font-size: 0.85rem; margin-top: 5px;">Generates structured summaries for fast
                                     preview.</p>
                                 <!-- Hidden Game Object 3: Inside the card back -->
